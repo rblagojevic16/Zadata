@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Zadatak.Models.Car>
+
+@{
+    ViewBag.Title = "Cars";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Cars</h2>
+@Html.ActionLink("New Car", "New", "Cars", null, new { @class = "btn btn-primary" })
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Naziv</th>
+            <th>Vrsta</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+        <tr>
+            <td>@Html.ActionLink(car.Name, "Edit", "Cars", new { id = car.Id }, null)</td>
+            <td>@car.Genre.Name</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
